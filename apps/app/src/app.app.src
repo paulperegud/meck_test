@@ -1,0 +1,17 @@
+{application, boo,
+ [
+  {description, "boo"},
+  {vsn, "0.1"},
+  {registered, []},
+  {applications, [
+                  kernel,
+                  stdlib,
+                  crypto,
+                  mnesia,
+                  mochiweb,
+                  jiffy,
+                  raven
+                 ]},
+  {mod, { boo_app, []}},
+  {env, []}
+ ]}.
