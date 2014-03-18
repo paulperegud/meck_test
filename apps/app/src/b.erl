@@ -13,7 +13,9 @@ b_test_() ->
              meck:new(a,[no_passthrough_cover])
      end,
      fun(_) ->
-             [] = [P || P <- processes(), erlang:check_process_code(P, a), P == self()],
+             %% the following should match otherwise code:purge in meck:unload
+             %% will fail (it will kill test process)
+             false = erlang:check_process_code(self(), a),
              meck:unload()
      end,
      fun(_) ->

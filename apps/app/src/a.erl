@@ -15,7 +15,7 @@ a_test_() ->
      fun(_) ->
              %% the following should match otherwise code:purge in meck:unload
              %% will fail (it will kill test process)
-             %% [] = [P || P <- processes(), erlang:check_process_code(P, b), P == self()],
+             false = erlang:check_process_code(self(), b),
              meck:unload()
      end,
      fun(_) ->
