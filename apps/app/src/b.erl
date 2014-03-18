@@ -13,8 +13,9 @@ b_test_() ->
              meck:new(a,[no_passthrough_cover])
      end,
      fun(_) ->
-             [] = [P || P <- processes(), erlang:check_process_code(P, a), P == self()],
-             meck:unload()
+%             [] = [P || P <- processes(), erlang:check_process_code(P, a), P == self()],
+%             meck:unload()
+ok
      end,
      fun(_) ->
              [ ?_assert(true) ]
