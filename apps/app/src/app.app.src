@@ -1,4 +1,4 @@
-{application, boo,
+{application, app,
  [
   {description, "boo"},
   {vsn, "0.1"},
@@ -12,6 +12,6 @@
                   jiffy,
                   raven
                  ]},
-  {mod, { boo_app, []}},
+  {mod, { app_app, []}},
   {env, []}
  ]}.

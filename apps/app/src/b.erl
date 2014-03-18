@@ -7,18 +7,17 @@ test_fun() ->
 -ifdef(TEST).
 -include_lib("eunit/include/eunit.hrl").
 
-baz_test_() ->
+b_test_() ->
     {setup,
      fun() ->
-             meck:new(a),
-             meck:expect(a, b, fun()-> ok end)
+             meck:new(a,[no_passthrough_cover])
      end,
      fun(_) ->
-             meck:unload(a)
+             [] = [P || P <- processes(), erlang:check_process_code(P, a), P == self()],
+             meck:unload()
      end,
      fun(_) ->
-             [ ?_assert(true),
-               ?_assertNot(false) ]
+             [ ?_assert(true) ]
      end
     }.
 
